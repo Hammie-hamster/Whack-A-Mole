@@ -1,0 +1,582 @@
+<html>
+ <head>
+   <title>Whack-a-mole!</title>
+ </head>
+ <body>
+  
+   <h1>Whack-a-mole!</h1>
+   <br>
+   <span>
+   <label id = "score_output">0</label>
+     <button onclick = "start()" id = "start_button">Start!</button>
+     <select name="speed" id="dropdown">
+       <option value="Easy">Easy</option>
+       <option value="Normal">Normal</option>
+       <option value="Hard">HARD</option>
+     </select>
+   </span>
+ 
+   <br><br>
+  
+   <span>
+    
+   <img src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png" class = "dirt" onclick = "firstmolev2()" id = "mole1">
+    
+    
+     <img src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png" class = "dirt" onclick = "secondmolev2()" id = "mole2">
+    
+    
+     <img src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png" class = "dirt" onclick = "thirdmolev2()" id = "mole3">
+    
+    
+   </span>
+  
+   <br><br>
+    
+     <span>
+    
+   <img src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png" class = "dirt" onclick = "fourthmolev2()" id = "mole4">
+      
+    
+     <img src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png" class = "dirt" onclick = "fifthmolev2()" id = "mole5">
+      
+    
+     <img src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png" class = "dirt" onclick = "sixthmolev2()" id = "mole6">
+      
+   </span>
+  
+ </body>
+ <style>
+   body {
+ background-color : RGB(0, 165, 255);
+ text-align : center;
+}
+ 
+label {
+ background-color : blue;
+ color : white;
+ border-radius : 10px;
+ padding-left : 20px;
+ padding-right : 20px;
+ padding-top : 1px;
+ padding-bottom : 1px;
+ margin-right : 10px;
+}
+ 
+#start_button {
+ background-color : blue;
+ border : none;
+ color : white;
+ border-radius : 5px;
+ padding-left : 15px;
+ padding-right : 15px;
+ padding-top : 10px;
+ padding-bottom : 10px;
+ font-size : 15px;
+}
+ 
+.dirt {
+ width : 200px;
+ height : 100px;
+ z-index : 9999;
+ margin-right : 50px;
+ margin-top : 50px;
+}
+ 
+span {
+ margin-left : 100px;
+}
+ 
+.mole {
+ width : 100px;
+ height : 75px;
+}
+ 
+#dropdown {
+ background-color : blue;
+ color : white;
+ border : none;
+ border-radius : 10px;
+ font-size : 15px;
+ margin-left: 10px;
+ padding-left : 10px;
+ padding-right : 10px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+}
+ </style>
+ <script>
+   var speed = document.getElementById("dropdown").value;
+var time = Math.random() * 5;
+var time_fixed = time.toFixed(0);
+var count = document.getElementById("score_output").innerHTML;
+var change = "";
+var how_many = 0;
+ 
+function start() {
+    speed = document.getElementById("dropdown").value;
+    count = 0;
+    document.getElementById("score_output").innerHTML = count;
+    time = Math.random() * 5;
+    time_fixed = time.toFixed(0);
+    how_many = 0;
+    change = "No";
+    document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+    document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+    document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+    document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+    document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+    document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+          if (time_fixed == 0) {
+            if (speed == "Easy") {
+      setTimeout(function() {
+        firstmole();
+      }, 5000);
+    } else if(speed == "Normal") {
+      setTimeout(function() {
+        firstmole();
+      }, 3000);
+    } else if(speed == "Hard") {
+      setTimeout(function() {
+        firstmole();
+      }, 1000);
+    }
+            
+            document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+    } else if (time_fixed == 1) {
+      if (speed == "Easy") {
+      setTimeout(function() {
+        secondmole();
+      }, 5000);
+    } else if(speed == "Normal") {
+      setTimeout(function() {
+        secondmole();
+      }, 3000);
+    } else if(speed == "Hard") {
+      setTimeout(function() {
+        secondmole();
+      }, 1000);
+    }
+    
+      document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+    }  else if (time_fixed == 2) {
+      if (speed == "Easy") {
+      setTimeout(function() {
+        thirdmole();
+      }, 5000);
+    } else if(speed == "Normal") {
+      setTimeout(function() {
+        thirdmole();
+      }, 3000);
+    } else if(speed == "Hard") {
+      setTimeout(function() {
+        thirdmole();
+      }, 1000);
+    }
+    
+    document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+    } else if (time_fixed == 3) {
+      if (speed == "Easy") {
+      setTimeout(function() {
+        fourthmole();
+      }, 5000);
+    } else if(speed == "Normal") {
+      setTimeout(function() {
+        fourthmole();
+      }, 3000);
+    } else if(speed == "Hard") {
+      setTimeout(function() {
+        fourthmole();
+      }, 1000);
+    }
+    
+      document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+    
+    } else if (time_fixed == 4) {
+      if (speed == "Easy") {
+      setTimeout(function() {
+        fifthmole();
+      }, 5000);
+    } else if(speed == "Normal") {
+      setTimeout(function() {
+        fifthmole();
+      }, 3000);
+    } else if(speed == "Hard") {
+      setTimeout(function() {
+        fifthmole();
+      }, 1000);
+    }
+    
+      document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+    } else if (time_fixed == 5) {
+      if (speed == "Easy") {
+      setTimeout(function() {
+        sixthmole();
+      }, 5000);
+    } else if(speed == "Normal") {
+      setTimeout(function() {
+        sixthmole();
+      }, 3000);
+    } else if(speed == "Hard") {
+      setTimeout(function() {
+        sixthmole();
+      }, 1000);
+    }
+    
+      document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+    }
+    startv2();
+  }
+
+ 
+function firstmole() {
+ if(change == "No") {
+    setTimeout(function() {
+      startv2();
+    }, 0)
+   how_many++;
+    document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  } else {
+ document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+}
+ 
+function secondmole() {
+ if(change == "No") {
+    setTimeout(function() {
+      startv2();
+    }, 0)
+   how_many++;
+    document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  } else {
+ document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+}
+ 
+function thirdmole() {
+ if(change == "No") {
+    setTimeout(function() {
+      startv2();
+    }, 0)
+   how_many++;
+    document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  } else {
+ document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+}
+ 
+function fourthmole() {
+ if(change == "No") {
+    setTimeout(function() {
+      startv2();
+    }, 0)
+   how_many++;
+    document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  } else {
+ document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+}
+ 
+function fifthmole() {
+ if(change == "No") {
+    setTimeout(function() {
+      startv2();
+    }, 0)
+   how_many++;
+    document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  } else {
+ document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+}
+ 
+function sixthmole() {
+  if(change == "No") {
+    setTimeout(function() {
+      startv2();
+    }, 0)
+    how_many++;
+    document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  } else {
+ document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+}
+ 
+function firstmolev2() {
+ count++;
+ document.getElementById("score_output").innerHTML = count;
+ 
+ document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+ 
+ setTimeout(function() {
+   startv2();
+}, 0);
+}
+ 
+function secondmolev2() {
+ count++;
+ document.getElementById("score_output").innerHTML = count;
+ 
+ document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+ 
+ setTimeout(function() {
+   startv2();
+}, 0);
+}
+ 
+function thirdmolev2() {
+ count++;
+ document.getElementById("score_output").innerHTML = count;
+ 
+ document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+ 
+ setTimeout(function() {
+   startv2();
+}, 0);
+}
+ 
+function fourthmolev2() {
+ count++;
+ document.getElementById("score_output").innerHTML = count;
+ 
+ document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+ 
+ setTimeout(function() {
+   startv2();
+}, 0);
+}
+ 
+function fifthmolev2() {
+ count++;
+ document.getElementById("score_output").innerHTML = count;
+ 
+ document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+ 
+ setTimeout(function() {
+   startv2();
+}, 0);
+}
+ 
+function sixthmolev2() {
+ count++;
+ document.getElementById("score_output").innerHTML = count;
+ 
+ document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+ 
+ setTimeout(function() {
+   startv2();
+}, 0);
+ 
+}
+ 
+function startv2() {
+  document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+ 
+ speed = document.getElementById("dropdown").value;
+ 
+ time = Math.random() * 5;
+     time_fixed = time.toFixed(0);
+ 
+ 
+     if (time_fixed == 0) {
+ 
+if(count > 20) {
+ change = "No";
+} else {
+   if(how_many <= 20) {
+    change = "No";
+if (speed == "Easy") {
+setTimeout(function() {
+firstmole();
+}, 5000);
+} else if(speed == "Normal") {
+setTimeout(function() {
+firstmole();
+}, 3000);
+} else if(speed == "Hard") {
+setTimeout(function() {
+firstmole();
+}, 1000);
+ document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+}
+  } else {
+    document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+ 
+  if(how_many > 20) {
+
+} else {
+  document.getElementById("mole1").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+}
+}
+ 
+} else if (time_fixed == 1) {
+ 
+if(count > 20) {
+  change = "No";
+} else {
+  if(how_many <= 20) {
+    change = "No";
+if (speed == "Easy") {
+setTimeout(function() {
+secondmole();
+}, 5000);
+} else if(speed == "Normal") {
+setTimeout(function() {
+secondmole();
+}, 3000);
+} else if(speed == "Hard") {
+setTimeout(function() {
+secondmole();
+}, 1000);
+ document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+}
+  } else {
+    document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+  
+  if(how_many > 20) {
+    
+} else {
+  document.getElementById("mole2").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+}
+}
+ 
+}  else if (time_fixed == 2) {
+ 
+if(count > 20) {
+  change = "No";
+} else {
+ if(how_many <= 20) {
+    change = "No";
+if (speed == "Easy") {
+setTimeout(function() {
+thirdmole();
+}, 5000);
+} else if(speed == "Normal") {
+setTimeout(function() {
+thirdmole();
+}, 3000);
+} else if(speed == "Hard") {
+setTimeout(function() {
+thirdmole();
+}, 1000);
+ document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+}
+  } else {
+    document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+  
+  if(how_many > 20) {
+
+} else {
+  document.getElementById("mole3").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+}
+}
+ 
+} else if (time_fixed == 3) {
+ 
+if(count > 20) {
+  change = "No";
+} else {
+  if(how_many <= 20) {
+    change = "No";
+if (speed == "Easy") {
+setTimeout(function() {
+fourthmole();
+}, 5000);
+} else if(speed == "Normal") {
+setTimeout(function() {
+fourthmole();
+}, 3000);
+} else if(speed == "Hard") {
+setTimeout(function() {
+fourthmole();
+}, 1000);
+ document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+}
+  } else {
+    document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+  
+  if(how_many > 20) {
+
+} else {
+  document.getElementById("mole4").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+}
+}
+ 
+} else if (time_fixed == 4) {
+ 
+if(count > 20) {
+  change = "No";
+} else {
+  if(how_many <= 20) {
+    change = "No";
+if (speed == "Easy") {
+setTimeout(function() {
+fifthmole();
+}, 5000);
+} else if(speed == "Normal") {
+setTimeout(function() {
+fifthmole();
+}, 3000);
+} else if(speed == "Hard") {
+setTimeout(function() {
+fifthmole();
+}, 1000);
+ document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+}
+  } else {
+    document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+  
+  if(how_many > 20) {
+
+} else {
+  document.getElementById("mole5").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+}
+   }
+ 
+} else if (time_fixed == 5) {
+ 
+ if(count > 20) {
+  change = "No";
+} else {
+  if(how_many > 20) {
+    document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+    change = "No";
+if (speed == "Easy") {
+setTimeout(function() {
+sixthmole();
+}, 5000);
+} else if(speed == "Normal") {
+setTimeout(function() {
+sixthmole();
+}, 3000);
+} else if(speed == "Hard") {
+setTimeout(function() {
+sixthmole();
+}, 1000);
+ document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+}
+  } else {
+    document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/dirt.png";
+  }
+
+  if(how_many > 20) {
+
+  } else {
+    document.getElementById("mole6").src = "https://raw.githubusercontent.com/JS-Beginners/whack-a-mole-project/main/mole.png";
+  }
+     }
+ 
+   }
+ 
+ }
+ </script>
+</html>
